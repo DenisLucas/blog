@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}projects{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="col-md">
+            {% for i in values %}
+                <a href="?id={{i._id}}">{{i.title}}</a>
+                <p>{{i.post}}</p>
+            {% endfor %}
+        </div>    
+    </div>
+{% endblock %}

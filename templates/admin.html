@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %} Admin {% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="col-md center-block">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <input type="submit" value="create" name="crud" class="btn btn-primary center-block">
+                    <input type="submit" value="update" name="crud" class="btn btn-primary center-block">
+                    <input type="submit" value="delete" name="crud" class="btn btn-primary center-block">
+                </div>
+            </form>
+            {% if create %}
+                <div class="col-md"> 
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="title"">Titulo:</label>
+                            <textarea class="form-control" name="title" rows="1"></textarea>
+                            <label for="content"">conteudo:</label>
+                            <textarea class="form-control" name="content" rows="3"></textarea>
+                            <label for="Game"">game:</label>
+                            <input type="checkbox" name="Game">
+                            <label for="Tutorial"">tutorial:</label>
+                            <input type="checkbox" name="Tutorial">
+                            <label for="devlogs"">devlogs:</label>
+                            <input type="checkbox" name="devlogs">
+                            <input type="submit" name="create">
+                        </div>
+                    </form>
+                </div>
+            {% endif %}
+            {% if update %}
+                <div class="col-md"> 
+                    {% for i in values %}
+                        <h4>{{i.title}}<h4>
+                        <p>{{i.game}}, {{i.tutorial}}, {{i.devlog}}</p>
+                        <form action="#" method="post">
+                            <input type="submit" name="update" value={{i._id}}>
+                        </form>
+                    {% endfor %}
+
+                </div>
+            {% endif %}
+            {% if delete %}
+            <div class="col-md"> 
+                {% for i in values %}
+                    <h4>{{i.title}}<h4>
+                    <p>{{i.game}}, {{i.tutorial}}, {{i.devlog}}</p>
+                <form action="#" method="post">
+                    <input type="submit" name="delete" value={{i._id}}>
+                </form>
+                {% endfor %}
+
+            </div>
+            {% endif %}
+            {% if upd %}
+                <div class="col-md"> 
+                    <h1>update</h1>
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="title"">Titulo:</label>
+                            <textarea class="form-control" name="title" rows="1">{{values.title}}</textarea>
+                            <label for="content"">conteudo:</label>
+                            <textarea class="form-control" name="content" rows="3">{{values.post}}</textarea>
+                            <label for="Game"">game:</label>
+                            <input type="checkbox" name="Game">
+                            <label for="Tutorial"">tutorial:</label>
+                            <input type="checkbox" name="Tutorial">
+                            <label for="devlogs"">devlogs:</label>
+                            <input type="checkbox" name="devlogs">
+                            <input type="submit" name="edit" value={{values._id}}>
+                        </div>
+                    </form>
+                </div>
+            {% endif %}
+            
+        </div>
+    </div>
+
+{% endblock %}

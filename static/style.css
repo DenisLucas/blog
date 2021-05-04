@@ -1,0 +1,6 @@
+<style type="text/css">
+    @font-face {
+    font-family: trial;
+    src: {{ url_for('static', filename='CENTRALESANSCND-BOLD.otf') }};
+    font-weight:bold; }
+</style>
